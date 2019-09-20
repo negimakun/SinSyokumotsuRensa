@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/Sound/GamePlay1.mp3</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/1000.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/BlueTile.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/chicken.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/GameClear.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/GameOver.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/glass.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/horizontalFence.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/house.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/number.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/pig.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/RedTile.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/tile.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/unchi.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/verticalFence.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/wolf.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/cow.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/exclamation.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/heart.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/meat.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/rion.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/hand2.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/UI.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/eagle.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/hand.png</File>
+  </SourceFiles>
+</SourceFileCollection>
