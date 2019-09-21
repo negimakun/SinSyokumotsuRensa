@@ -41,11 +41,11 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Button.cs" />
     <Compile Include="Camp.cs" />
     <Compile Include="Count.cs" />
     <Compile Include="CSV\CSVReader.cs" />
     <Compile Include="CSV\EnemyCSVParser.cs" />
-    <Compile Include="Enemy.cs" />
     <Compile Include="EnemyLevel1.cs" />
     <Compile Include="EnemyLevel2.cs" />
     <Compile Include="EnemyLevel3.cs" />
@@ -58,12 +58,23 @@
     <Compile Include="Music\Loader.cs" />
     <Compile Include="Music\Sound.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Player2.cs" />
+    <Compile Include="Player3.cs" />
+    <Compile Include="PlayerMather.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="Scene\GamePlay.cs" />
+    <Compile Include="Scene\IScene.cs" />
+    <Compile Include="Scene\Load.cs" />
+    <Compile Include="Scene\SceneManager.cs" />
+    <Compile Include="Scene\SceneName.cs" />
+    <Compile Include="Scene\Title.cs" />
+    <Compile Include="Scene\Tutorial.cs" />
+    <Compile Include="Scene\Wave.cs" />
     <Compile Include="Unchi.cs" />
     <Compile Include="Wall.cs" />
-    <Compile Include="Wave.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

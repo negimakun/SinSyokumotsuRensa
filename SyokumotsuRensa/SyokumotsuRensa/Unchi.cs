@@ -14,6 +14,7 @@ namespace SyokumotsuRensa
         List<Glass> glasses;
 
         public bool iswwwFlag = false;
+      
 
         public Unchi(Vector2 pos,List<Glass> glasses)
         {
@@ -21,7 +22,9 @@ namespace SyokumotsuRensa
             deleteTime = 3;
             this.glasses = glasses;
         }
-
+        public void Initialize()
+        {
+        }
         public void Update()
         {
             if (deleteTime > 0)
@@ -36,11 +39,16 @@ namespace SyokumotsuRensa
                 iswwwFlag = true;
                
             }
+         
         }
 
         public void Draw(Renderer renderer)
         {
-            renderer.DrawTexture("unchi", position);
+           
+                renderer.DrawTexture("unchi", position);
+            
+          
+
         }
     }
 }

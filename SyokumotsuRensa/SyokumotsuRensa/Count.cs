@@ -24,8 +24,10 @@ namespace SyokumotsuRensa
         }
         public void Draw(Renderer renderer)
         {
-            renderer.DrawNumber("number", new Vector2(120, 50), Player.playerStock);
-            renderer.DrawNumber("number", new Vector2(120, 150), Glass.glassStock);
+            renderer.DrawNumber("number", new Vector2(100, 50), Player.playerStock);
+            renderer.DrawNumber("number", new Vector2(100, 150), Player2.player2Stock);
+            renderer.DrawNumber("number", new Vector2(100, 250), Player3.player3Stock);
+            renderer.DrawNumber("number", new Vector2(100, 350), Glass.glassStock);
         }
     }
 }

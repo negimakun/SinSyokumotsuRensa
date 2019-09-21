@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace SyokumotsuRensa
 {
-    abstract class Enemy
+   abstract class Enemy
     {
         public Camp baseCamp;
 
@@ -28,7 +28,7 @@ namespace SyokumotsuRensa
 
         public readonly int TextureSize = 50;
         public List<Wall> walls;
-        public List<Player> players;
+        public List<PlayerMather> players;
         public List<Unchi> unchis;
         public int targetPlayerNom;
         public int colWallNum;
@@ -47,7 +47,7 @@ namespace SyokumotsuRensa
 
         protected bool eatFlag = false; //今食べてるよ！！！ってフラグ
 
-         protected float collisionCoolTime = 0;
+        protected float collisionCoolTime = 0;
 
         protected List<Glass> glasses;
 
@@ -65,7 +65,7 @@ namespace SyokumotsuRensa
                 foreach (var ge in players)
                 {
                     if (((Vector2.Distance(enemyPos, ge.playerPos) <= 4 * TextureSize && !ge.isDeadFlag
-                        && NeerGlassEaterAble(ge, direction) && !glassEatTargetFlag)
+                        && NeerGlassEaterAble(ge,direction) && !glassEatTargetFlag)
                         /*|| (glassEatTargetFlag && GEDistance(players[targetPlayerNom], ge))*/) && ge.playerPos != ge.spowPos)
                     {
                         neerGlassEaterFlag = true;
@@ -82,7 +82,7 @@ namespace SyokumotsuRensa
             }
         }
 
-        public bool GEDistance(Player now, Player judge)
+        public bool GEDistance(PlayerMather now, PlayerMather judge)
         {
             Vector2 nowPlayerXEnemy = new Vector2(Math.Abs(now.playerPos.X - enemyPos.X), Math.Abs(now.playerPos.Y - enemyPos.Y));
             Vector2 judgePlayerXEnemy = new Vector2(Math.Abs(judge.playerPos.X - enemyPos.X), Math.Abs(judge.playerPos.Y - enemyPos.Y));
@@ -95,7 +95,7 @@ namespace SyokumotsuRensa
             return false;
         }
 
-        public bool NeerGlassEaterAble(Player player, Direction direct)
+        public bool NeerGlassEaterAble(PlayerMather player, Direction direct)
         {
             float GEDistance; //ターゲットの草食獣との距離
             switch (direct)
@@ -349,7 +349,7 @@ namespace SyokumotsuRensa
                 {
                     players[targetPlayerNom].isDeadFlag = true;
                     stuff -= players[targetPlayerNom].stuff;
-                    Player.playerStock--;
+               
                     glassEatTargetFlag = false;
                     eatFlag = true;
                 }

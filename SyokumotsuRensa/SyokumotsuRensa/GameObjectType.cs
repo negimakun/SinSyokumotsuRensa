@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace SyokumotsuRensa
 {
+    class GameEndFlag
+    {
+        public static bool gameEndFlag = false;
+    }
+
     class Screen
     {
         public static int ScreenWidth = 1450;
         public static int ScreenHeight = 950;
     }
+    static class StocPos
+    {
+        public static Vector2 stocPosUI = new Vector2(50,50) ;
+        public static Vector2 stocPos2UI = new Vector2(50,150) ;
+        public static Vector2 stocPos3UI = new Vector2(50, 250);
+        public static Vector2 stockGlassUI = new Vector2(50, 350);
+    }
+    
     enum GameObjectType
     {
         meatEat,
@@ -18,6 +32,18 @@ namespace SyokumotsuRensa
         glass,
         unchi,
         NULL
+    }
+
+    enum ButtonType
+    {
+        titleUI_hajimeru,//はじめる
+        titleUI_setsumei,//せつめい
+        titleUI_owaru,//しゅうりょう
+        yajirushi,//みぎ
+        hidarikun,//ひだり
+        resultUI_retry,//リトライ
+        resultUI_title,//タイトル
+        nextday,//次の日
     }
 
     enum Direction
@@ -63,7 +89,7 @@ namespace SyokumotsuRensa
             }
             return Direction.NULL;
         }
-        public static bool WallXPlayer(Wall wall, Player player)
+        public static bool WallXPlayer(Wall wall, PlayerMather player)
         {
             if (wall.position.X <= player.movePos.X + player.TextureSize//壁の左側
                   && wall.position.X + wall.rectangle.Width >= player.movePos.X - player.TextureSize//壁の右側
@@ -75,7 +101,7 @@ namespace SyokumotsuRensa
             return false;
         }
 
-        public static Direction WallXPlayerDirection(Wall wall, Player player)
+        public static Direction WallXPlayerDirection(Wall wall, PlayerMather player)
         {
             if (wall.position.X + wall.rectangle.Width <= player.playerPos.X)
             {//壁の右側（進行方向は左）

@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace SyokumotsuRensa
 {
-    class EnemyLevel3 : Enemy
+    class EnemyLevel3:Enemy
     {
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace SyokumotsuRensa
         /// <param name="spawnTimeSet">どのタイミングで出てくるかの設定</param>
         /// <param name="unchis">うんこのリスト</param>
         /// <param name="glasses">草のリスト</param>
-        public EnemyLevel3(Direction direction, Camp camp, List<Player> players, List<Wall> walls,
+        public EnemyLevel3(Direction direction, Camp camp, List<PlayerMather> players, List<Wall> walls,
             float spawnTimeSet, List<Unchi> unchis, List<Glass> glasses)
         {
             this.direction = direction;
@@ -35,7 +35,7 @@ namespace SyokumotsuRensa
 
         public override void Initialize()
         {
-            stuff = 2;
+            stuff = 1;
             neerGlassEaterFlag = false;
             glassEatTargetFlag = false;
             switch (direction)
@@ -63,14 +63,7 @@ namespace SyokumotsuRensa
 
         public override void Update()
         {
-            //if (Input.IsMouseRButton())
-            //{
-            //    moveTimeSet = 0.1f * walls.Count;
-            //}
-            //else
-            //{
-            //    moveTimeSet = 1 * walls.Count;
-            //}
+
 
             if (spawnTime > 0)//スポーンしないとき
             {
@@ -88,7 +81,7 @@ namespace SyokumotsuRensa
                 collisionCoolTime--;
             }
 
-            if ((stuff <= 0 || eatFlag) && eatTime > 0)//満腹で食べきってないとき
+            if (stuff <= 0 && eatTime > 0)//満腹で食べきってないとき
             {
                 eatTime -= 1;
             }
@@ -101,18 +94,13 @@ namespace SyokumotsuRensa
             {
                 MoveToSpawn();
             }
-            else if (stuff > 0 && eatTime <= 0)
-            {
-                eatTime = 3 * 60;
-                eatFlag = false;
-            }
 
             NeerGlassEater();//近くに草食動物がいるかどうか
 
 
             foreach (var wall in walls)//壁
             {
-                if (eatTime <= 0 || stuff <= 0 || eatFlag)
+                if (eatTime <= 0 || stuff <= 0)
                 {
                     break;
                 }
@@ -154,19 +142,46 @@ namespace SyokumotsuRensa
             if (moveEndFlag)
             {
                 //ここに草食獣のストックを減らす処理
-                Player.playerStock -= 5;
+                if (Player.playerStock > 0)
+                {
+                    Player.playerStock -= 3;
+                }
+                else
+                {
+                    Player2.player2Stock -= 2;
+                }
+
             }
 
             enemyMasu = new Vector2(enemyPos.X / TextureSize, enemyPos.Y / TextureSize);
         }
 
+
+
         public override void Draw(Renderer renderer)
         {
-            if (spawnTime > 0 || enemyPos.X < 300)//スポーンしないとき
+            if (enemyPos.X < 300)
             {
                 return;
             }
+
             renderer.DrawTexture("rion", enemyPos);
+            if (neerGlassEaterFlag && stuff > 0)//発見
+            {
+                renderer.DrawTexture("exclamation", enemyPos);
+            }
+            if (stuff <= 0 && eatTime > 0)//満腹で食べきってないとき
+            {
+                eatTime -= 1;
+                renderer.DrawTexture("meat", new Vector2(enemyPos.X + 10, enemyPos.Y));
+
+            }
+            if (stuff <= 0 && eatTime <= 0)
+            {
+                renderer.DrawTexture("heart", new Vector2(enemyPos.X + 10, enemyPos.Y));
+            }
+
+
         }
 
     }

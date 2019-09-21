@@ -17,14 +17,14 @@ namespace SyokumotsuRensa
         public bool isDeadFlag = false;
         public bool setGlassFlag = false;
         bool clickFlag = false;
-        bool unchiFlag = false;
+      
         readonly int TextureSize = 50;
 
 
 
         public Glass()
         {
-            glassSpowPos = new Vector2(850, 450);
+           glassSpowPos = new Vector2(850, 450);
         }
         
         /// <summary>
@@ -40,8 +40,9 @@ namespace SyokumotsuRensa
 
         public void Initialize()
         {
-            glassStockPos = new Vector2(50, 150);
+          
             glassPos = glassSpowPos;
+            glassStockPos = StocPos.stockGlassUI;
         }
         public void Update()
         {
@@ -67,21 +68,29 @@ namespace SyokumotsuRensa
 
                             Glass.glassStock--;
                             setGlassFlag = true;
-                            //clickFlag = false;
+                            clickFlag = false;
                             glassMasu = new Vector2(glassPos.X / TextureSize, glassPos.Y / TextureSize);
 
                         }
                     }
                 }
+                Console.WriteLine(setGlassFlag);
             }
 
         }
         public void Draw(Renderer renderer)
         {
-            renderer.DrawTexture("glass", glassStockPos);
+           
             if (!isDeadFlag)
             {
                 renderer.DrawTexture("glass", glassPos);
+            }
+            if(clickFlag)
+            {
+               
+                renderer.DrawTexture("RedTile", new Vector2((int)(Input.MousePosition.X / 50) * 50, (int)(Input.MousePosition.Y / 50) * 50), 0.5f);
+                renderer.DrawTexture("glass", new Vector2((int)(Input.MousePosition.X / 50) * 50, (int)(Input.MousePosition.Y / 50) * 50), 0.8f);
+              
             }
 
         }

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace SyokumotsuRensa
 {
-    class EnemyLevel1 : Enemy
+    class EnemyLevel1:Enemy
     {
+       
 
         /// <summary>
         /// 
@@ -20,7 +21,7 @@ namespace SyokumotsuRensa
         /// <param name="spawnTimeSet">どのタイミングで出てくるかの設定</param>
         /// <param name="unchis">うんこのリスト</param>
         /// <param name="glasses">草のリスト</param>
-        public EnemyLevel1(Direction direction, Camp camp, List<Player> players, List<Wall> walls,
+        public EnemyLevel1(Direction direction, Camp camp, List<PlayerMather> players, List<Wall> walls,
             float spawnTimeSet, List<Unchi> unchis, List<Glass> glasses)
         {
             this.direction = direction;
@@ -63,14 +64,6 @@ namespace SyokumotsuRensa
 
         public override void Update()
         {
-            //if (Input.IsMouseRButton())
-            //{
-            //    moveTimeSet = 0.1f * walls.Count;
-            //}
-            //else
-            //{
-            //    moveTimeSet = 1 * walls.Count;
-            //}
 
             if (spawnTime > 0)//スポーンしないとき
             {
@@ -149,24 +142,50 @@ namespace SyokumotsuRensa
             if (moveEndFlag)
             {
                 //ここに草食獣のストックを減らす処理
-                Player.playerStock -= 3;
+                if(Player.playerStock>0)
+                {
+                    Player.playerStock -= 3;
+                }
+                else
+                {
+                    Player2.player2Stock -= 2;
+                }
+               
             }
 
             enemyMasu = new Vector2(enemyPos.X / TextureSize, enemyPos.Y / TextureSize);
         }
 
+       
+
         public override void Draw(Renderer renderer)
         {
-            if (spawnTime > 0 || enemyPos.X < 300)//スポーンしないとき
+            if (enemyPos.X < 300)
             {
                 return;
             }
+
             renderer.DrawTexture("wolf", enemyPos);
-            if (neerGlassEaterFlag)
+            if (neerGlassEaterFlag&&stuff>0)//発見
             {
-                renderer.DrawTexture("exclamation", new Vector2(enemyPos.X + 5, enemyPos.Y - 20));
+                renderer.DrawTexture("exclamation", enemyPos); 
             }
+            if (stuff <= 0 && eatTime > 0)//満腹で食べきってないとき
+            {
+                eatTime -= 1;
+                renderer.DrawTexture("meat", new Vector2( enemyPos.X +10,enemyPos.Y));
+
+            }
+            if (stuff <= 0 && eatTime <= 0)
+            {
+                renderer.DrawTexture("heart",new Vector2( enemyPos.X+10,enemyPos.Y));
+            }
+
+
         }
 
+
+
+      
     }
 }

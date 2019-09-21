@@ -203,5 +203,9 @@ namespace SyokumotsuRensa
         {
             return preciousMouse.ScrollWheelValue - currentMouse.ScrollWheelValue;
         }
+        public static Vector2 getMasu()
+        {
+            return new Vector2(((int)MousePosition.X / 50)*50, ((int)MousePosition.Y / 50)*50);
+        }
     }
 }

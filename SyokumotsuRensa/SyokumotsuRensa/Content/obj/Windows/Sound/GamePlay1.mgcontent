@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/Sound/GamePlay1.mp3</SourceFile>
+  <SourceFile>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/Sound/GamePlay1.mp3</SourceFile>
   <SourceTime>2019-09-15T22:41:38+09:00</SourceTime>
-  <DestFile>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/Sound/GamePlay1.xnb</DestFile>
-  <DestTime>2019-09-18T13:10:20.8142229+09:00</DestTime>
+  <DestFile>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/Sound/GamePlay1.xnb</DestFile>
+  <DestTime>2019-09-21T12:20:22.7348669+09:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/Sound/GamePlay1.wma</string>
+    <string>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/Sound/GamePlay1.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

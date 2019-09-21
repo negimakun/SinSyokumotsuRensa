@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/hand2.png</SourceFile>
+  <SourceFile>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/hand2.png</SourceFile>
   <SourceTime>2019-09-19T13:43:44+09:00</SourceTime>
-  <DestFile>C:/K018A1462_seisaku/monogame/Seisaku/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/hand2.xnb</DestFile>
-  <DestTime>2019-09-19T14:07:53.388151+09:00</DestTime>
+  <DestFile>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/hand2.xnb</DestFile>
+  <DestTime>2019-09-21T12:20:23.1439655+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -16,7 +16,7 @@ namespace SyokumotsuRensa.CSV
         private CSVReader csvReader;//CSV読込用オブジェクト
         private List<Enemy> enemys;//ゲームオブジェクトのリスト
         Camp baseCamp;
-        List<Player> playerList;
+        List<PlayerMather> playerList;
         List<Wall> wallList;
         List<Unchi> unchiList;
         List<Glass> glassList;
@@ -34,7 +34,7 @@ namespace SyokumotsuRensa.CSV
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public EnemyCSVParser(Camp camp, List<Player> players, List<Wall> walls, List<Unchi> unchis, List<Glass> glasses)
+        public EnemyCSVParser(Camp camp, List<PlayerMather> players, List<Wall> walls, List<Unchi> unchis, List<Glass> glasses)
         {
             baseCamp = camp;
             playerList = players;
@@ -57,12 +57,7 @@ namespace SyokumotsuRensa.CSV
             functionTable.Add("EnemyLevel1", NewEnemyLevel1);
             functionTable.Add("EnemyLevel2", NewEnemyLevel2);
             functionTable.Add("EnemyLevel3", NewEnemyLevel3);
-            //functionTable.Add("SlidingBlock", NewSlidingBlock);
-            //functionTable.Add("Block", NewBlock);
-            //functionTable.Add("ChaseEnemy", NewChaseEnemy);
-            //functionTable.Add("JumpingEnemy", NewJumpingEnemy);
-            //functionTable.Add("HPEnemy", NewHPEnemy);
-            //functionTable.Add("NeerEnemy", NewNeerEnemy);
+
         }
 
         /// <summary>
@@ -132,8 +127,6 @@ namespace SyokumotsuRensa.CSV
 
             return null;
         }
-
-
         private Enemy NewEnemyLevel2(List<string> data)
         {
             //読み込んだ行の列数が正しいかチェック
@@ -159,8 +152,6 @@ namespace SyokumotsuRensa.CSV
 
             return null;
         }
-
-
         private Enemy NewEnemyLevel3(List<string> data)
         {
             //読み込んだ行の列数が正しいかチェック
@@ -186,6 +177,11 @@ namespace SyokumotsuRensa.CSV
 
             return null;
         }
+
+
+
+
+
 
         ///// <summary>
         ///// 移動ブロックの解析を生成

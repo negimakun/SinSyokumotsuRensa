@@ -7,106 +7,101 @@ using System.Threading.Tasks;
 
 namespace SyokumotsuRensa
 {
-    class Player
+    class Player:PlayerMather
     {
-        Vector2 secondPos;
-        public Vector2 movePos;//動いている間の位置
-        public Vector2 playerPos;
-
+      
         Vector2 stockPos;//UIボタン
-       public Vector2 spowPos;//出現位置
-
         Vector2 limit;
-        public Vector2 plMasu;
         public static int playerStock = 15;
-        bool clickFlag = false;
-        bool glassEatFlag = false;
-        public bool isDeadFlag = false;
-        public bool moveFlag = false;
-        bool moveStart = false;
-        public List<Glass> glasses;
-        int targetGlassNom;
-        public Direction direction;
-        public List<Wall> walls;
-        public int colWallNum;
-        public bool avoidFlag = true;
-        //int nowCnt;
-        float playerMoveTime;
-        float playerMoveTimeSet;
-        float collisionCoolTime = 0;
-        int wallNowCnt;
-
-
+        public static int stockCnt = 15;
         float time;
 
-        public int stuff;//肉食が食べた時にたまる満腹度
 
-        public readonly int TextureSize = 50;
 
-        public Player(List<Glass> glasses, List<Wall> walls)
+        public Player(List<Glass> glasses, List<Wall> walls):base(glasses,walls)
         {
-            //this.direction = direction;
+         
             this.walls = walls;
             stuff = 1;
             this.glasses = glasses;
+           // stockPos = StocPos.stocPosUI;
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
 
-            stockPos = new Vector2(50,50);
-
+            
             spowPos = new Vector2(850, 450);
+            stockPos = StocPos.stocPosUI;
             playerPos = spowPos;
-
+            movePos = spowPos;
+            clickFlag = true;
             playerMoveTimeSet = 1 * walls.Count;
         }
-        public void Update()
+        public override void Update()
         {
-            if (avoidFlag)
+            if (isDeadFlag)
             {
-                wallNowCnt = 0;
-            }
-            if (collisionCoolTime <= 0)
-            {
-                collisionCoolTime--;
-            }
+                syoutenTime -= 1;
 
-            if (playerStock > 0)
-            {
-                if (Input.IsMouseLButtonDown())
+                playerPos += new Vector2(0, -2f);
+
+
+                if (syoutenTime < 0)
                 {
-                    if (stockPos == new Vector2((int)(Input.MousePosition.X / TextureSize)
-                                 * TextureSize, (int)(Input.MousePosition.Y / TextureSize) * TextureSize) || clickFlag)
+                    playerStock--;
+                }
+                return;
+            }
+            if (stockCnt > 0)
+            {
+
+             
+
+                if (avoidFlag)
+                {
+                    wallNowCnt = 0;
+                }
+                if (collisionCoolTime <= 0)
+                {
+                    collisionCoolTime--;
+                }
+
+                
+                    if (Input.IsMouseLButtonDown())
                     {
-                        if (!clickFlag)
+                        if (stockPos == new Vector2((int)(Input.MousePosition.X / TextureSize)
+                                     * TextureSize, (int)(Input.MousePosition.Y / TextureSize) * TextureSize) || clickFlag)
                         {
-                            spowPos = new Vector2((int)(spowPos.X / TextureSize)/*何マス目か*/ * TextureSize,
-                                (int)(spowPos.Y / TextureSize) * TextureSize);
-                            movePos = spowPos;
-                            clickFlag = true;
-                        }
-                        else if(clickFlag && Input.MousePosition.X > 300 )
-                        {
-                            secondPos = new Vector2((int)(Input.MousePosition.X / TextureSize)/*何マス目か*/ * TextureSize,
-                                (int)(Input.MousePosition.Y / TextureSize) * TextureSize);
+                            if (!clickFlag)
+                            {
+                                spowPos = new Vector2((int)(spowPos.X / TextureSize)/*何マス目か*/ * TextureSize,
+                                    (int)(spowPos.Y / TextureSize) * TextureSize);
+                                movePos = spowPos;
+                                clickFlag = true;
+                            }
+                            else if (clickFlag && Input.MousePosition.X > 300)
+                            {
+                                secondPos = new Vector2((int)(Input.MousePosition.X / TextureSize)/*何マス目か*/ * TextureSize,
+                                    (int)(Input.MousePosition.Y / TextureSize) * TextureSize);
 
-                            limit = new Vector2((int)(secondPos.X - spowPos.X) / TextureSize,
-                                (int)(secondPos.Y - spowPos.Y) / TextureSize);
-                            if (limit.X < 0) limit.X++;
-                            if (limit.Y < 0) limit.Y++;
+                                limit = new Vector2((int)(secondPos.X - spowPos.X) / TextureSize,
+                                    (int)(secondPos.Y - spowPos.Y) / TextureSize);
+                                if (limit.X < 0) limit.X++;
+                                if (limit.Y < 0) limit.Y++;
 
-                            //時間 ＝ フレーム　一マス辺りの時間　移動マス
-                            if (Math.Abs(limit.X) < Math.Abs(limit.Y)) time = 60 / 10 * Math.Abs(limit.Y);
-                            else time = 60 / 10 * Math.Abs(limit.X);
+                                //時間 ＝ フレーム　一マス辺りの時間　移動マス
+                                if (Math.Abs(limit.X) < Math.Abs(limit.Y)) time = 60 / 10 * Math.Abs(limit.Y);
+                                else time = 60 / 10 * Math.Abs(limit.X);
 
-                            clickFlag = false;
-                            moveStart = true;
+                                clickFlag = false;
+                                moveStart = true;
+
+                            }
                         }
                     }
-                }
+          
             }
-
             if (playerPos != secondPos && moveStart)
             {
                 if (Math.Abs(limit.X) >= Math.Abs((movePos.X / TextureSize) - (spowPos.X / TextureSize)))
@@ -124,36 +119,12 @@ namespace SyokumotsuRensa
             else if (playerPos == secondPos)
             {
                 moveFlag = true;
+                stockCnt--;
                 EatGlass();
             }
 
-            //ここが怪しい
-            foreach (var wall in walls)
-            {
-                if (!Collision.WallXPlayer(wall, this) && avoidFlag)
-                {
-                    wallNowCnt++;
-                }
 
-                else
-                {
-                    // wallNowCnt = colWallNum;
-                    colWallNum = wallNowCnt;
-                    PlayerWallAvoid();
-
-                }
-            }
             plMasu = new Vector2((int)playerPos.X / TextureSize, (int)playerPos.Y / TextureSize);
-        }
-
-        public void Draw(Renderer renderer)
-        {
-
-            renderer.DrawTexture("pig", stockPos);
-            if (!isDeadFlag)
-            {
-                renderer.DrawTexture("pig", playerPos);
-            }
         }
         public void EatGlass()
         {
@@ -168,8 +139,9 @@ namespace SyokumotsuRensa
                         glassEatFlag = true;
                         targetGlassNom = nowCnt;
                         playerStock += 2;
+                        stockCnt += 2;
                         gls.isDeadFlag = true;
-                      
+
                     }
 
                     nowCnt++;
@@ -177,143 +149,35 @@ namespace SyokumotsuRensa
             }
 
         }
-        public void PlayerWallAvoid()
+
+    
+     
+
+        public override void Draw(Renderer renderer)
         {
-        //    if (collisionCoolTime <= 0)
-        //    {
-        //        float Down;
-        //        float Right;
-        //        if (avoidFlag)
-        //        {
-        //            direction = Collision.WallXPlayerDirection(walls[colWallNum], this);
-        //            avoidFlag = false;
-        //        }
-        //        Vector2 moveWall;
-        //        Vector2 center = new Vector2(playerPos.X + TextureSize / 2, playerPos.Y + TextureSize / 2);
-        //        center.X = center.X - walls[colWallNum].position.X;
-        //        center.Y = center.Y - walls[colWallNum].position.Y;
+           
+         
+            if (!isDeadFlag)
+            {
+                renderer.DrawTexture("chicken", playerPos);
+            }
+            else
+            {
+                renderer.DrawTexture("chicken", playerPos, 0.7f);
+                renderer.DrawTexture("ring", playerPos+new Vector2(0,-10));
+            }
+            if (clickFlag)
+            {
+                renderer.DrawTexture("RedTile", new Vector2((int)(Input.MousePosition.X / 50) * 50, (int)(Input.MousePosition.Y / 50) * 50), 0.5f);
 
-        //        playerMoveTime = 50 / playerMoveTimeSet / 60.0f;
+                renderer.DrawTexture("chicken", new Vector2((int)(Input.MousePosition.X / 50) * 50, (int)(Input.MousePosition.Y / 50) * 50), 0.8f);
 
-        //        switch (direction)
-        //        {
-        //            case Direction.RIGHT:
-        //                Down = walls[colWallNum].rectangle.Height - center.Y;
-        //                if (Down/*下側の距離*/ < center.Y && Down > 0)//下の方が距離が短いとき
-        //                {
-        //                    movePos += new Vector2(0, playerMoveTime);
-        //                }
-        //                else if (Down >= center.Y && 0 < center.Y)
-        //                {
-        //                    movePos += new Vector2(0, -playerMoveTime);
-        //                }
-
-        //                moveWall = new Vector2(walls[colWallNum].rectangle.Width, 0);
-        //                if (Down < 0 || center.Y < 0)
-        //                {
-        //                    movePos += new Vector2(playerMoveTime, 0);
-        //                }
-
-        //                if (movePos.X - walls[colWallNum].position.X > moveWall.X)
-        //                {
-        //                    avoidFlag = true;
-        //                    collisionCoolTime = 10;
-        //                }
-        //                playerPos = new Vector2((int)(movePos.X / TextureSize) * TextureSize,
-        //               (int)(movePos.Y / TextureSize) * TextureSize);
-        //                break;
-
-        //            case Direction.LEFT:
-        //                Down = walls[colWallNum].rectangle.Height - center.Y;
-        //                if (Down/*下側の距離*/ < center.Y && Down > 0)
-        //                {
-        //                    movePos += new Vector2(0, playerMoveTime);
-        //                }
-        //                else if (Down >= center.Y && 0 < center.Y)
-        //                {
-        //                    movePos += new Vector2(0, -playerMoveTime);
-        //                }
-
-        //                moveWall = new Vector2(-walls[colWallNum].rectangle.Width, 0);
-        //                if (Down < 0 || center.Y < 0)
-        //                {
-        //                    movePos += new Vector2(-playerMoveTime, 0);
-        //                }
-
-        //                if (playerPos.X - walls[colWallNum].position.X < moveWall.X)
-        //                {
-        //                    avoidFlag = true;
-        //                    collisionCoolTime = 10;
-        //                }
-        //                playerPos = new Vector2((int)(movePos.X / TextureSize) * TextureSize,
-        //               (int)(movePos.Y / TextureSize) * TextureSize);
-        //                break;
-
-        //            case Direction.TOP:
-        //                Right = walls[colWallNum].rectangle.Width - center.X;
-        //                if (Right/*右側の距離*/ < center.X/*左側の距離*/ && Right > 0)
-        //                {
-                         
-        //                        movePos += new Vector2(playerMoveTime, 0);
-                          
-        //                }
-        //                else if (Right >= center.X && 0 < center.X)
-        //                {
-        //                    movePos += new Vector2(-playerMoveTime, 0);
-        //                }
-
-        //                moveWall = new Vector2(0, -walls[colWallNum].rectangle.Height);
-
-        //                if (Right < 0 || center.X < 0)
-        //                {
-        //                    movePos += new Vector2(0, -playerMoveTime);
-        //                }
-
-        //                if (playerPos.Y - walls[colWallNum].position.Y < moveWall.Y)
-        //                {
-        //                    avoidFlag = true;
-        //                    collisionCoolTime = 10;
-        //                }
-        //                playerPos = new Vector2((int)(movePos.X / TextureSize) * TextureSize,
-        //               (int)(movePos.Y / TextureSize) * TextureSize);
-        //                break;
-
-        //            case Direction.BOTTOM:
-
-        //                Right = walls[colWallNum].rectangle.Width - center.X;
-        //                if (Right/*右側の距離*/ < center.X/*左側の距離*/ && Right > 0)
-        //                {
-        //                    movePos += new Vector2(playerMoveTime, 0);
-        //                }
-        //                else if (Right >= center.X && 0 < center.X)
-        //                {
-        //                    movePos += new Vector2(-playerMoveTime, 0);
-        //                }
-
-        //                moveWall = new Vector2(0, walls[colWallNum].rectangle.Height);
-
-        //                if (Right < 0 || center.X < 0)
-        //                {
-        //                    movePos += new Vector2(0, playerMoveTime);
-        //                }
-
-        //                if (playerPos.Y - walls[colWallNum].position.Y > moveWall.Y)
-        //                {
-        //                    avoidFlag = true;
-        //                    collisionCoolTime = 10;
-        //                }
-        //                playerPos = new Vector2((int)(movePos.X / TextureSize) * TextureSize,
-        //               (int)(movePos.Y / TextureSize) * TextureSize);
-        //                break;
-
-        //            case Direction.NULL:
-        //                break;
-        //            default:
-        //                break;
-        //        }
-           }
-
+            }
         }
     }
+}
+
+ 
+    
 
 
