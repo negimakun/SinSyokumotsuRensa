@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/Sound/gameclear.mp3</SourceFile>
+  <SourceTime>2019-09-19T06:50:42+09:00</SourceTime>
+  <DestFile>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/Sound/gameclear.xnb</DestFile>
+  <DestTime>2019-09-22T21:46:06.3329016+09:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2017-03-02T00:05:36+09:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/Sound/gameclear.wma</string>
+  </BuildOutput>
+</PipelineBuildEvent>

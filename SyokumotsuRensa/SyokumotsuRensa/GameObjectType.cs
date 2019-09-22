@@ -38,6 +38,7 @@ namespace SyokumotsuRensa
     {
         titleUI_hajimeru,//はじめる
         titleUI_setsumei,//せつめい
+        titleUI_setsumei_end,//せつめいしゅうりょう
         titleUI_owaru,//しゅうりょう
         yajirushi,//みぎ
         hidarikun,//ひだり

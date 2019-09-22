@@ -123,9 +123,13 @@ namespace SyokumotsuRensa
                 {
                     Player.playerStock -= 3;
                 }
-                else
+                else if (Player2.player2Stock > 0)
                 {
                     Player2.player2Stock -= 2;
+                }
+                else
+                {
+                    Player3.player3Stock--;
                 }
 
             }

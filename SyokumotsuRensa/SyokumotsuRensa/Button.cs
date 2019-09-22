@@ -113,6 +113,9 @@ namespace SyokumotsuRensa
                     case ButtonType.titleUI_setsumei:
                         PlayStyle();
                         break;
+                    case ButtonType.titleUI_setsumei_end:
+                        PlayStyleEnd();
+                        break;
                     case ButtonType.titleUI_owaru:
                         GameEnd();
                         break;
@@ -167,6 +170,11 @@ namespace SyokumotsuRensa
         public void PlayStyle()
         {
             title.playStyleFlag = true;
+        }
+
+        public void PlayStyleEnd()
+        {
+            title.playStyleFlag = false;
         }
 
         public void PlayStyleArrowRight()

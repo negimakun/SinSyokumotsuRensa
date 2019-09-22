@@ -94,6 +94,7 @@ namespace SyokumotsuRensa
             renderer.LoadContent("unchi");
             renderer.LoadContent("whiteunchi");
             renderer.LoadContent("wolf");
+            renderer.LoadContent("wolf2");
             renderer.LoadContent("GameOver");
             renderer.LoadContent("horizontalFence");
             renderer.LoadContent("verticalFence");
@@ -121,6 +122,13 @@ namespace SyokumotsuRensa
             renderer.LoadContent("resultUI_title");
             renderer.LoadContent("titleUI_setsumei");
             renderer.LoadContent("yajirushi");
+            renderer.LoadContent("tutorial1");
+            renderer.LoadContent("tutorial2");
+            renderer.LoadContent("tutorial3");
+            renderer.LoadContent("arrowhukidashi");
+            renderer.LoadContent("hidarikun");
+            renderer.LoadContent("tojiru");
+            renderer.LoadContent("slash");
             // この上にロジックを記述
         }
 
@@ -145,7 +153,7 @@ namespace SyokumotsuRensa
         {
             // ゲーム終了処理（ゲームパッドのBackボタンかキーボードのエスケープボタンが押されたら終了）
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
-                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
+                 (Keyboard.GetState().IsKeyDown(Keys.Escape)) || GameEndFlag.gameEndFlag)
             {
                 Exit();
             }

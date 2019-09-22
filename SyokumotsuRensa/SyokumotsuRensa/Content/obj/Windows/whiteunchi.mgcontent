@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/whiteunchi.png</SourceFile>
+  <SourceFile>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/whiteunchi.png</SourceFile>
   <SourceTime>2019-09-20T14:24:30+09:00</SourceTime>
-  <DestFile>C:/Users/K018A1462/Desktop/α/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/whiteunchi.xnb</DestFile>
-  <DestTime>2019-09-21T12:20:23.449147+09:00</DestTime>
+  <DestFile>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/bin/Windows/whiteunchi.xnb</DestFile>
+  <DestTime>2019-09-22T21:42:04.2651222+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

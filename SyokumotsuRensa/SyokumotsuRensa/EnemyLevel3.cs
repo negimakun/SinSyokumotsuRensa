@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SyokumotsuRensa
 {
-    class EnemyLevel3:Enemy
+    class EnemyLevel3 : Enemy
     {
 
         /// <summary>
@@ -144,11 +144,15 @@ namespace SyokumotsuRensa
                 //ここに草食獣のストックを減らす処理
                 if (Player.playerStock > 0)
                 {
-                    Player.playerStock -= 3;
+                    Player.playerStock -= 4;
+                }
+                else if (Player2.player2Stock > 0)
+                {
+                    Player2.player2Stock -= 2;
                 }
                 else
                 {
-                    Player2.player2Stock -= 2;
+                    Player3.player3Stock -= 2;
                 }
 
             }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SyokumotsuRensa
 {
-    class EnemyLevel1:Enemy
+    class EnemyLevel1 : Enemy
     {
-       
+
 
         /// <summary>
         /// 
@@ -142,21 +142,25 @@ namespace SyokumotsuRensa
             if (moveEndFlag)
             {
                 //ここに草食獣のストックを減らす処理
-                if(Player.playerStock>0)
+                if (Player.playerStock > 0)
                 {
                     Player.playerStock -= 3;
                 }
-                else
+                else if (Player2.player2Stock > 0)
                 {
                     Player2.player2Stock -= 2;
                 }
-               
+                else
+                {
+                    Player3.player3Stock--;
+                }
+
             }
 
             enemyMasu = new Vector2(enemyPos.X / TextureSize, enemyPos.Y / TextureSize);
         }
 
-       
+
 
         public override void Draw(Renderer renderer)
         {
@@ -165,20 +169,20 @@ namespace SyokumotsuRensa
                 return;
             }
 
-            renderer.DrawTexture("wolf", enemyPos);
-            if (neerGlassEaterFlag&&stuff>0)//発見
+            renderer.DrawTexture("wolf2", enemyPos);
+            if (neerGlassEaterFlag && stuff > 0)//発見
             {
-                renderer.DrawTexture("exclamation", enemyPos); 
+                renderer.DrawTexture("exclamation", enemyPos);
             }
             if (stuff <= 0 && eatTime > 0)//満腹で食べきってないとき
             {
                 eatTime -= 1;
-                renderer.DrawTexture("meat", new Vector2( enemyPos.X +10,enemyPos.Y));
+                renderer.DrawTexture("meat", new Vector2(enemyPos.X + 10, enemyPos.Y));
 
             }
             if (stuff <= 0 && eatTime <= 0)
             {
-                renderer.DrawTexture("heart",new Vector2( enemyPos.X+10,enemyPos.Y));
+                renderer.DrawTexture("heart", new Vector2(enemyPos.X + 10, enemyPos.Y));
             }
 
 
@@ -186,6 +190,6 @@ namespace SyokumotsuRensa
 
 
 
-      
+
     }
 }
