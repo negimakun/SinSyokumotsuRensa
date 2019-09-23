@@ -63,10 +63,6 @@ namespace SyokumotsuRensa
         public void Update()
         {
             nextWave = currentWave + 1;
-            if (Input.GetKeyTrigger(Keys.D9))
-            {
-                eL1List.Clear();
-            }
 
             if (Player.playerStock <= 0 && Player2.player2Stock <= 0 && Player3.player3Stock <= 0)
             {
