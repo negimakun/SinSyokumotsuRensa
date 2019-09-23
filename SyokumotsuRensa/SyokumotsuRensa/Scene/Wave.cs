@@ -11,7 +11,7 @@ namespace SyokumotsuRensa
 {
     class Wave
     {
-        int currentWave;
+        public static int currentWave;
         int nextWave;
 
         readonly int FinalWave = 3;
