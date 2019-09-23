@@ -58,7 +58,7 @@ namespace SyokumotsuRensa
             enemyMovePos = enemySpawnPos;
             enemyPos = enemySpawnPos;
 
-            moveTimeSet = 2;
+            moveTimeSet = 1.5f;
         }
 
         public override void Update()

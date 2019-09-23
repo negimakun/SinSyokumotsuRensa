@@ -7,8 +7,6 @@
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/Sound/GamePlay1.mp3</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/BlueTile.png</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/chicken.png</File>
-    <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/GameClear.png</File>
-    <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/GameOver.png</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/glass.png</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/horizontalFence.png</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/house.png</File>
@@ -61,5 +59,7 @@
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/tojiru.png</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/wolf2.png</File>
     <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/slash.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/GameOver.png</File>
+    <File>C:/K018A1462_seisaku/monogame/Seisaku/GitSyokumotsuRensa/SyokumotsuRensa/SyokumotsuRensa/Content/GameClear.png</File>
   </SourceFiles>
 </SourceFileCollection>

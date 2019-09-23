@@ -269,10 +269,10 @@ namespace SyokumotsuRensa.Scene
             renderer.DrawTexture("cow", StocPos.stocPos3UI);
             renderer.DrawTexture("glass", StocPos.stockGlassUI);
 
+            
+            camp.Draw(renderer);
 
             wave.Draw(renderer);
-
-            camp.Draw(renderer);
 
             if (wave.isClearFlag && !wave.IsFinalWave())
             {

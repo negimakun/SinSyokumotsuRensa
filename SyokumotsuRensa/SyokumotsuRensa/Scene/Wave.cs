@@ -16,6 +16,10 @@ namespace SyokumotsuRensa
 
         readonly int FinalWave = 3;
 
+        Vector2 waveDays;
+        Vector2 waveDaysMid;
+        float alpha;
+
         public bool isEndFlag;
         public bool isClearFlag;
         private List<Enemy> eL1List;
@@ -58,11 +62,16 @@ namespace SyokumotsuRensa
             {
                 el1.Initialize();
             }
+
+            waveDays = new Vector2(50, 800);
+            waveDaysMid = new Vector2(475, 350);
+            alpha = 1.0f;
         }
 
         public void Update()
         {
             nextWave = currentWave + 1;
+            
 
             if (Player.playerStock <= 0 && Player2.player2Stock <= 0 && Player3.player3Stock <= 0)
             {
@@ -102,6 +111,8 @@ namespace SyokumotsuRensa
                 }
             }
 
+            alpha -= 0.7f / 60;
+
         }
 
         public void Draw(Renderer renderer)
@@ -109,6 +120,24 @@ namespace SyokumotsuRensa
             foreach (var el1 in eL1List)
             {
                 el1.Draw(renderer);
+            }
+
+            switch (currentWave)
+            {
+                case 1:
+                    renderer.DrawTexture("ichinichime", waveDays, null, 0.0f, Vector2.Zero, new Vector2(0.25f, 0.3f));
+                    renderer.DrawTexture("ichinichime", waveDaysMid,alpha);
+                    break;
+                case 2:
+                    renderer.DrawTexture("futsukame", waveDays, null, 0.0f, Vector2.Zero, new Vector2(0.25f, 0.3f));
+                    renderer.DrawTexture("futsukame", waveDaysMid, alpha);
+                    break;
+                case 3:
+                    renderer.DrawTexture("mikkame", waveDays, null, 0.0f, Vector2.Zero, new Vector2(0.25f, 0.3f));
+                    renderer.DrawTexture("mikkame", waveDaysMid, alpha);
+                    break;
+                default:
+                    break;
             }
 
             //ゲームオーバー
@@ -165,6 +194,8 @@ namespace SyokumotsuRensa
             {
                 el1.Initialize();
             }
+
+            alpha = 1.0f;
         }
     }
 }
