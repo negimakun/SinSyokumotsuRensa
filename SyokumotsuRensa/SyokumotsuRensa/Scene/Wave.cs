@@ -71,7 +71,11 @@ namespace SyokumotsuRensa
         public void Update()
         {
             nextWave = currentWave + 1;
-            
+
+            if (Input.GetKeyState(Keys.N) && Input.GetKeyState(Keys.E) && Input.GetKeyTrigger(Keys.T))
+            {
+                isClearFlag = true;
+            }
 
             if (Player.playerStock <= 0 && Player2.player2Stock <= 0 && Player3.player3Stock <= 0)
             {
