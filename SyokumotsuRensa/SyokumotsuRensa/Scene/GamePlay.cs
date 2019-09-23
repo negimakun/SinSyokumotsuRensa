@@ -126,6 +126,10 @@ namespace SyokumotsuRensa.Scene
 
         public void Update(GameTime gameTime)
         {
+            if (Input.GetKeyState(Keys.E) && Input.GetKeyState(Keys.X) && Input.GetKeyState(Keys.I) && Input.GetKeyTrigger(Keys.T))
+            {
+                returnTitleFlag = true;
+            }
             if (wave.isClearFlag && !wave.IsFinalWave())
             {
                 nextDay.Update();
