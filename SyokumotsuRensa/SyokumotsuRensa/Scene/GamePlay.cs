@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SyokumotsuRensa.Scene
 {
-    class GamePlay:IScene
+    class GamePlay : IScene
     {
         Count count;
         List<PlayerMather> players;
@@ -22,7 +22,7 @@ namespace SyokumotsuRensa.Scene
         Camp camp;
         bool isEndFlag;
         bool isClearFlag;
-        public bool  returnTitleFlag = false;
+        public bool returnTitleFlag = false;
         int playerSyoki = 15;
         int player2Syoki = 10;
         int player3Syoki = 5;
@@ -46,19 +46,18 @@ namespace SyokumotsuRensa.Scene
             sound = gameDevise.GetSound();
         }
 
-        
+
 
         public void Initialize()
         {
-           
-            Player.playerStock= playerSyoki;
+            Player.playerStock = playerSyoki;
             Player2.player2Stock = player2Syoki;
             Player3.player3Stock = player3Syoki;
-            Glass.glassStock = glassSyoki ; 
+            Glass.glassStock = glassSyoki;
             bgmLoader = new BGMLoader(new string[,] { { "GamePlay1", "./Sound/" } });
             bgmLoader.Initialize();
-            
-           
+
+
             unchis = new List<Unchi>();
             camp = new Camp();
             count = new Count();
@@ -88,7 +87,7 @@ namespace SyokumotsuRensa.Scene
             }
 
             players = new List<PlayerMather>();
-         
+
 
             foreach (var pl in players)
             {
@@ -122,7 +121,7 @@ namespace SyokumotsuRensa.Scene
 
         public void Shutdown()
         {
-          
+
         }
 
         public void Update(GameTime gameTime)
@@ -137,7 +136,7 @@ namespace SyokumotsuRensa.Scene
             }
 
             wave.Update();
-            if (Player.playerStock <= 0&&Player2.player2Stock<=0&&Player3.player3Stock<=0)
+            if (Player.playerStock <= 0 && Player2.player2Stock <= 0 && Player3.player3Stock <= 0)
             {
                 isEndFlag = true;
                 if (Input.GetKeyTrigger(Keys.Space))
@@ -153,7 +152,7 @@ namespace SyokumotsuRensa.Scene
                 sound.PlayBGM("GamePlay1");
 
 
-              
+
                 foreach (var gl in glasses)
                 {
                     if (!gl.setGlassFlag)
@@ -162,7 +161,7 @@ namespace SyokumotsuRensa.Scene
                     }
                 }
 
-                if (Input.getMasu() == StocPos.stockGlassUI && Input.IsMouseLButtonDown()&&!handFlag)
+                if (Input.getMasu() == StocPos.stockGlassUI && Input.IsMouseLButtonDown() && !handFlag)
                 {
                     glasses.Add(new Glass());
                     glasses[glasses.Count - 1].Initialize();
@@ -186,7 +185,7 @@ namespace SyokumotsuRensa.Scene
                     }
                 }
 
-                if (Input.getMasu() == StocPos.stocPosUI && Input.IsMouseLButtonDown() && !handFlag)
+                if (Input.getMasu() == StocPos.stocPosUI && Input.IsMouseLButtonDown() && !handFlag && Player.playerStock > 0)
                 {
 
                     players.Add(new Player(glasses, walls));
@@ -194,30 +193,30 @@ namespace SyokumotsuRensa.Scene
                     handFlag = true;
 
                 }
-                if (Input.getMasu() == StocPos.stocPos2UI && Input.IsMouseLButtonDown() && !handFlag)
+                if (Input.getMasu() == StocPos.stocPos2UI && Input.IsMouseLButtonDown() && !handFlag && Player2.player2Stock > 0)
                 {
                     players.Add(new Player2(glasses, walls));
                     players[players.Count - 1].Initialize();
                     handFlag = true;
                 }
-                if(Input.getMasu()==StocPos.stocPos3UI && Input.IsMouseLButtonDown() && !handFlag)
+                if (Input.getMasu() == StocPos.stocPos3UI && Input.IsMouseLButtonDown() && !handFlag && Player3.player3Stock > 0)
                 {
                     players.Add(new Player3(glasses, walls));
                     players[players.Count - 1].Initialize();
                     handFlag = true;
                 }
-                
+
 
 
 
                 for (int p = players.Count - 1; p >= 0; p--)
                 {
-                    if (players[p].syoutenTime<0)
+                    if (players[p].syoutenTime < 0)
                     {
                         players.RemoveAt(p);
                     }
                 }
-                
+
                 foreach (var wa in walls)
                 {
                     wa.Update();
@@ -227,7 +226,7 @@ namespace SyokumotsuRensa.Scene
                 {
                     un.Update();
                 }
-                
+
 
                 for (int i = unchis.Count - 1; i >= 0; i--)
                 {
@@ -253,14 +252,14 @@ namespace SyokumotsuRensa.Scene
             }
 
 
-            
+
             renderer.DrawTexture("UI", Vector2.Zero, new Rectangle(0, 0, 300, Screen.ScreenHeight));
-            
+
 
             count.Draw(renderer);
 
 
-            
+
             unchis.ForEach(u => u.Draw(renderer));
             walls.ForEach(w => w.Draw(renderer));
             glasses.ForEach(g => g.Draw(renderer));

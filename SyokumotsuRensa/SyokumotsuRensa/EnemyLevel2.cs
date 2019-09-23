@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SyokumotsuRensa
 {
-    class EnemyLevel2:Enemy
+    class EnemyLevel2 : Enemy
     {
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace SyokumotsuRensa
             enemyMovePos = enemySpawnPos;
             enemyPos = enemySpawnPos;
 
-            moveTimeSet = 2 * walls.Count;
+            moveTimeSet = 2;
         }
 
         public override void Update()
@@ -97,18 +97,22 @@ namespace SyokumotsuRensa
             NeerGlassEater();//近くに草食動物がいるかどうか
 
 
-        
-                    if (stuff > 0 && !moveEndFlag)//壁に当たってないとき//満腹でなくて移動が終わってないとき
+
+            if (stuff > 0 && !moveEndFlag)//壁に当たってないとき//満腹でなくて移動が終わってないとき
+            {
+                if (!neerGlassEaterFlag)//いないとき
+                {
+                    MoveToCamp();//真ん中に向かう
+                }
+                else
+                {
+                    MoveToGE();
+                    if (players != null && players[targetPlayerNom].isDeadFlag)
                     {
-                        if (!neerGlassEaterFlag)//いないとき
-                        {
-                            MoveToCamp();//真ん中に向かう
-                        }
-                        else
-                        {
-                            MoveToGE();
-                        }
+                        glassEatTargetFlag = false;
                     }
+                }
+            }
 
             enemyCenterPosition = new Vector2(enemyPos.X + (TextureSize / 2), enemyPos.Y + (TextureSize / 2));
 
@@ -136,9 +140,9 @@ namespace SyokumotsuRensa
 
             enemyMasu = new Vector2(enemyPos.X / TextureSize, enemyPos.Y / TextureSize);
         }
-    
 
-           
+
+
 
 
 

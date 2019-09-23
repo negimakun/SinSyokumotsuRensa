@@ -30,7 +30,7 @@ namespace SyokumotsuRensa
         public List<Wall> walls;
         public List<PlayerMather> players;
         public List<Unchi> unchis;
-        public int targetPlayerNom;
+        public int targetPlayerNom = 0;
         public int colWallNum;
 
         protected int stuff;//満腹いくつ？
@@ -60,13 +60,25 @@ namespace SyokumotsuRensa
         public void NeerGlassEater()
         {
             int nowCount = 0;
+
             if (players != null)
             {
+                if (players.Count == 0)
+                {
+                    return;
+                }
+                if (targetPlayerNom > players.Count - 1)
+                {
+                    targetPlayerNom = 0;
+                    neerGlassEaterFlag = false;
+                    glassEatTargetFlag = false;
+                }
+
                 foreach (var ge in players)
                 {
                     if (((Vector2.Distance(enemyPos, ge.playerPos) <= 4 * TextureSize && !ge.isDeadFlag
                         && NeerGlassEaterAble(ge,direction) && !glassEatTargetFlag)
-                        /*|| (glassEatTargetFlag && GEDistance(players[targetPlayerNom], ge))*/) && ge.playerPos != ge.spowPos)
+                        || (glassEatTargetFlag && GEDistance(players[targetPlayerNom], ge))) && ge.playerPos != ge.spowPos)
                     {
                         neerGlassEaterFlag = true;
                         enemyHeadPos = ge.playerPos;
@@ -79,6 +91,12 @@ namespace SyokumotsuRensa
                     }
                     nowCount++;
                 }
+
+                //if (players.Count != 0 && players[targetPlayerNom].isDeadFlag)
+                //{
+                //    neerGlassEaterFlag = false;
+                //    glassEatTargetFlag = false; 
+                //}
             }
         }
 

@@ -35,7 +35,7 @@ namespace SyokumotsuRensa
 
         public override void Initialize()
         {
-            stuff = 1;
+            stuff = 2;
             neerGlassEaterFlag = false;
             glassEatTargetFlag = false;
             switch (direction)
@@ -81,7 +81,7 @@ namespace SyokumotsuRensa
                 collisionCoolTime--;
             }
 
-            if (stuff <= 0 && eatTime > 0)//満腹で食べきってないとき
+            if ((stuff <= 0 || eatFlag) && eatTime > 0)//満腹で食べきってないとき
             {
                 eatTime -= 1;
             }
@@ -93,6 +93,11 @@ namespace SyokumotsuRensa
             else if (stuff <= 0 && eatTime <= 0)
             {
                 MoveToSpawn();
+            }
+            else if (stuff > 0 && eatTime <= 0)
+            {
+                eatTime = 3 * 60;
+                eatFlag = false;
             }
 
             NeerGlassEater();//近くに草食動物がいるかどうか
@@ -116,6 +121,10 @@ namespace SyokumotsuRensa
                         else
                         {
                             MoveToGE();
+                            if (players != null && players[targetPlayerNom].isDeadFlag)
+                            {
+                                glassEatTargetFlag = false;
+                            }
                         }
                     }
 
@@ -124,6 +133,10 @@ namespace SyokumotsuRensa
                 else if (neerGlassEaterFlag)
                 {
                     MoveToGE();
+                    if (players != null && players[targetPlayerNom].isDeadFlag)
+                    {
+                        glassEatTargetFlag = false;
+                    }
                 }
                 else//当たっているとき
                 {

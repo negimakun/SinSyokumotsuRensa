@@ -68,7 +68,7 @@ namespace SyokumotsuRensa
                 eL1List.Clear();
             }
 
-            if (Player.playerStock <= 0)
+            if (Player.playerStock <= 0 && Player2.player2Stock <= 0 && Player3.player3Stock <= 0)
             {
                 isEndFlag = true;
             }

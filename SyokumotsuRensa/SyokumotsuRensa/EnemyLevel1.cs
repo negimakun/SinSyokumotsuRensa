@@ -116,6 +116,10 @@ namespace SyokumotsuRensa
                         else
                         {
                             MoveToGE();
+                            if (players != null && players[targetPlayerNom].isDeadFlag)
+                            {
+                                glassEatTargetFlag = false;
+                            }
                         }
                     }
 
@@ -124,6 +128,10 @@ namespace SyokumotsuRensa
                 else if (neerGlassEaterFlag)
                 {
                     MoveToGE();
+                    if (players != null && players[targetPlayerNom].isDeadFlag)
+                    {
+                        glassEatTargetFlag = false;
+                    }
                 }
                 else//当たっているとき
                 {
